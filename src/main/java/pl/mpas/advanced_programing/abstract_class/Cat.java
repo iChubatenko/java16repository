@@ -1,14 +1,16 @@
 package pl.mpas.advanced_programing.abstract_class;
 
-public class Dog extends Animal {
+import pl.mpas.advanced_programing.comparing.cars.Car;
 
-    public Dog (String name) {
+public class Cat extends Animal {
+
+    public Cat(String name){
         super(name);
     }
 
     @Override
     public String toString() {
-        return "Dog{" +
+        return "Cat{" +
                 "name='" + name + '\'' +
                 '}';
     }

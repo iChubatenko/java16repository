@@ -1,6 +1,9 @@
 package pl.mpas.advanced_programing.stream;
 
+import javafx.collections.transformation.SortedList;
+
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -47,4 +50,22 @@ public class StreamExample {
                 .map(item -> item.getPrice())
                 .reduce(BigDecimal.ZERO, (bigDecimal, bigDecimal2) -> bigDecimal.add(bigDecimal2));
     }
+
+    public static List<String> getIngredientsNames2(List<Order> orders) {
+
+        List<String> result = new ArrayList<>();
+
+        return orders.stream()
+                .flatMap(order -> order.getMyItem().stream())
+                .flatMap(item -> item.getIngredientsList().stream())
+                .map(ingredient -> ingredient.getName())
+                .distinct()
+                .reduce(result, (strings, s) -> {
+                    strings.add(s);
+                    System.out.println(strings);
+                    return strings;
+                }, (strings, strings2) -> result);
+
+    }
+
 }
