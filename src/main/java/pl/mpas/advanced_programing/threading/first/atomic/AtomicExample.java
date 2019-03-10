@@ -8,14 +8,13 @@ public class AtomicExample {
 
         AtomicInteger i = new AtomicInteger();
         Runnable job = () -> {
-          i.incrementAndGet();
-          i.getAndIncrement();
+          i.incrementAndGet(); // ++i
+          i.getAndIncrement(); // i++
 
           int currentValue = i.intValue();
 
           do {
               currentValue = i.intValue();
-
           } while (!i.compareAndSet(currentValue, currentValue + 2));
         };
     }
